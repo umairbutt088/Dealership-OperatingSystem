@@ -1,5 +1,5 @@
 import uuid
-from datetime import date, datetime
+from datetime import date as DateType, datetime
 from typing import Optional
 
 from sqlalchemy import Boolean, Date, DateTime, Float, ForeignKey, Integer, String, Text, func
@@ -25,7 +25,7 @@ class Vehicle(Base):
 
     model: Mapped[Optional[str]] = mapped_column(String(255))
     month: Mapped[Optional[str]] = mapped_column(String(32))  # first-of-month ISO date string
-    date_acquired: Mapped[Optional[date]] = mapped_column(Date)
+    date_acquired: Mapped[Optional[DateType]] = mapped_column(Date)
     source: Mapped[Optional[str]] = mapped_column(String(128))
     investor: Mapped[Optional[str]] = mapped_column(String(128))
     px_value: Mapped[Optional[float]] = mapped_column(Float)
@@ -37,14 +37,14 @@ class Vehicle(Base):
     days_in_stock: Mapped[Optional[int]] = mapped_column(Integer)
 
     is_sold: Mapped[bool] = mapped_column(Boolean, default=False)
-    date_sold: Mapped[Optional[date]] = mapped_column(Date)
+    date_sold: Mapped[Optional[DateType]] = mapped_column(Date)
     sold_price: Mapped[Optional[float]] = mapped_column(Float)
     profit: Mapped[Optional[float]] = mapped_column(Float)
     part_ex: Mapped[Optional[float]] = mapped_column(Float)
     sa_investor_profit_share: Mapped[Optional[float]] = mapped_column(Float)
     investor_profit: Mapped[Optional[float]] = mapped_column(Float)
     sa_profit: Mapped[Optional[float]] = mapped_column(Float)
-    date_listed: Mapped[Optional[date]] = mapped_column(Date)
+    date_listed: Mapped[Optional[DateType]] = mapped_column(Date)
     platform: Mapped[Optional[str]] = mapped_column(String(128))
     invoice_number: Mapped[Optional[str]] = mapped_column(String(64))
     customer_name: Mapped[Optional[str]] = mapped_column(String(255))
@@ -83,8 +83,8 @@ class DeliveryRow(Base):
     plate_norm: Mapped[Optional[str]] = mapped_column(String(32), index=True)
     model: Mapped[Optional[str]] = mapped_column(String(255))
     addr: Mapped[Optional[str]] = mapped_column(String(512))
-    date: Mapped[Optional[date]] = mapped_column(Date)
-    scheduled_date: Mapped[Optional[date]] = mapped_column(Date)
+    date: Mapped[Optional[DateType]] = mapped_column(Date)
+    scheduled_date: Mapped[Optional[DateType]] = mapped_column(Date)
     driver: Mapped[Optional[str]] = mapped_column(String(255))
     cost: Mapped[Optional[float]] = mapped_column(Float)
     status: Mapped[Optional[str]] = mapped_column(String(64))
@@ -97,7 +97,7 @@ class CollectionRow(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     source: Mapped[Optional[str]] = mapped_column(String(128))
-    date_won: Mapped[Optional[date]] = mapped_column(Date)
+    date_won: Mapped[Optional[DateType]] = mapped_column(Date)
     plate: Mapped[Optional[str]] = mapped_column(String(32), index=True)
     plate_norm: Mapped[Optional[str]] = mapped_column(String(32), index=True)
     model: Mapped[Optional[str]] = mapped_column(String(255))
@@ -114,8 +114,8 @@ class ExpenseRow(Base):
     __tablename__ = "expenses"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    month: Mapped[Optional[date]] = mapped_column(Date)
-    date: Mapped[Optional[date]] = mapped_column(Date)
+    month: Mapped[Optional[DateType]] = mapped_column(Date)
+    date: Mapped[Optional[DateType]] = mapped_column(Date)
     category: Mapped[Optional[str]] = mapped_column(String(128))
     from_vendor: Mapped[Optional[str]] = mapped_column("vendor_from", String(255))
     amount: Mapped[Optional[float]] = mapped_column(Float)
@@ -130,8 +130,8 @@ class MoneyInRow(Base):
     __tablename__ = "money_in"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    month: Mapped[Optional[date]] = mapped_column(Date)
-    date: Mapped[Optional[date]] = mapped_column(Date)
+    month: Mapped[Optional[DateType]] = mapped_column(Date)
+    date: Mapped[Optional[DateType]] = mapped_column(Date)
     category: Mapped[Optional[str]] = mapped_column(String(128))
     amount: Mapped[Optional[float]] = mapped_column(Float)
     reg: Mapped[Optional[str]] = mapped_column(String(64))
@@ -144,8 +144,8 @@ class MoneyOutRow(Base):
     __tablename__ = "money_out"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    month: Mapped[Optional[date]] = mapped_column(Date)
-    date: Mapped[Optional[date]] = mapped_column(Date)
+    month: Mapped[Optional[DateType]] = mapped_column(Date)
+    date: Mapped[Optional[DateType]] = mapped_column(Date)
     category: Mapped[Optional[str]] = mapped_column(String(128))
     amount: Mapped[Optional[float]] = mapped_column(Float)
     notes: Mapped[Optional[str]] = mapped_column(Text)
@@ -155,7 +155,7 @@ class CashSpendingRow(Base):
     __tablename__ = "cash_spending"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    month: Mapped[Optional[date]] = mapped_column(Date)
+    month: Mapped[Optional[DateType]] = mapped_column(Date)
     amount: Mapped[Optional[float]] = mapped_column(Float)
     cost_incurred_on: Mapped[Optional[str]] = mapped_column(String(255))
     reason: Mapped[Optional[str]] = mapped_column(Text)
@@ -165,8 +165,8 @@ class FuelExpenseRow(Base):
     __tablename__ = "fuel_expense"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    month: Mapped[Optional[date]] = mapped_column(Date)
-    date: Mapped[Optional[date]] = mapped_column(Date)
+    month: Mapped[Optional[DateType]] = mapped_column(Date)
+    date: Mapped[Optional[DateType]] = mapped_column(Date)
     car: Mapped[Optional[str]] = mapped_column(String(255))
     amount: Mapped[Optional[float]] = mapped_column(Float)
     column1: Mapped[Optional[str]] = mapped_column(String(255))
@@ -176,8 +176,8 @@ class SorRow(Base):
     __tablename__ = "sor"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    month: Mapped[Optional[date]] = mapped_column(Date)
-    date_acquired: Mapped[Optional[date]] = mapped_column(Date)
+    month: Mapped[Optional[DateType]] = mapped_column(Date)
+    date_acquired: Mapped[Optional[DateType]] = mapped_column(Date)
     plate: Mapped[Optional[str]] = mapped_column(String(32))
     plate_norm: Mapped[Optional[str]] = mapped_column(String(32), index=True)
     model: Mapped[Optional[str]] = mapped_column(String(255))
@@ -192,8 +192,8 @@ class InvestorCarExpenseRow(Base):
     __tablename__ = "investor_car_expense"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    month: Mapped[Optional[date]] = mapped_column(Date)
-    date: Mapped[Optional[date]] = mapped_column(Date)
+    month: Mapped[Optional[DateType]] = mapped_column(Date)
+    date: Mapped[Optional[DateType]] = mapped_column(Date)
     reason: Mapped[Optional[str]] = mapped_column(String(255))
     amount: Mapped[Optional[float]] = mapped_column(Float)
     reg: Mapped[Optional[str]] = mapped_column(String(255))
@@ -206,7 +206,7 @@ class MonthlySummary(Base):
     __tablename__ = "monthly_summary"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    month: Mapped[date] = mapped_column(Date, unique=True)
+    month: Mapped[DateType] = mapped_column(Date, unique=True)
     cars_sold: Mapped[Optional[int]] = mapped_column(Integer)
     total_revenue: Mapped[Optional[float]] = mapped_column(Float)
     total_gross_profit: Mapped[Optional[float]] = mapped_column(Float)

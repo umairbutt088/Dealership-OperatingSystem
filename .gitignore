@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.py[cod]
+data/
+*.db
+.DS_Store
+static/js/app.js.bak

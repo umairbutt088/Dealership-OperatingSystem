@@ -1,0 +1,862 @@
+<body>
+<div class="soverlay" id="soverlay" onclick="closeSB()"></div>
+
+<!-- ════════════════ SIDEBAR ════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="slogo">
+    <div class="slogo-txt">SA Motors (TRIAL TASK)<br>DealerOS v4</div>
+  </div>
+  <nav class="snav">
+    <div class="sg">
+      <div class="sg-lbl">Overview</div>
+      <button class="ni active" onclick="nav('dashboard',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</button>
+    </div>
+    <div class="sg">
+      <div class="sg-lbl">Stock</div>
+      <button class="ni" onclick="nav('stock',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4V7z"/></svg>Current Stock<span class="nb g" id="nb-stock">29</span></button>
+      <button class="ni" onclick="nav('sold',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Sold History<span class="nb g">95</span></button>
+      <button class="ni" onclick="nav('collections',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/></svg>Collections &amp; Deliveries</button>
+      <button class="ni" onclick="nav('servicehistory',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6M9 16h6M9 8h6M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/></svg>Service History</button>
+      <button class="ni" onclick="nav('mot',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>MOT Tracker<span class="nb r" id="nb-mot">0</span></button>
+      <button class="ni" onclick="nav('insurance',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Insurance &amp; SORN</button>
+    </div>
+    <div class="sg">
+      <div class="sg-lbl">Operations</div>
+      <button class="ni" onclick="nav('viewings',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Viewings<span class="nb b" id="nb-viewings">0</span></button>
+      <button class="ni" onclick="nav('sellcar',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Sell a Car 🔑</button>
+      <button class="ni" onclick="nav('tasks',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><rect x="3" y="4" width="18" height="18" rx="2"/></svg>Tasks<span class="nb r">4</span></button>
+      <button class="ni" onclick="nav('fines',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Fines &amp; Penalties<span class="nb a" id="nb-fines">0</span></button>
+    </div>
+    <div class="sg">
+      <div class="sg-lbl">Finance</div>
+      <button class="ni" onclick="nav('expenses',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Finance Log</button>
+      <button class="ni" onclick="nav('receipts',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Receipts &amp; AI Scan<span class="nb a">NEW</span></button>
+      <button class="ni" onclick="nav('banking',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Routes & Planning</button>
+      <button class="ni" onclick="nav('invoices',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8"/></svg>Investor Invoices</button>
+      <button class="ni" onclick="nav('investors',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>Investor Ledger</button>
+      <button class="ni" onclick="nav('wages',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Staff &amp; Wages</button>
+      <button class="ni" onclick="nav('vat',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 14l6-6M9 9h.01M15 15h.01M22 12A10 10 0 112 12a10 10 0 0120 0z"/></svg>VAT Tracker</button>
+    </div>
+    <div class="sg">
+      <div class="sg-lbl">Intelligence</div>
+      <button class="ni" onclick="nav('reports',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Reports &amp; Analytics</button>
+    </div>
+    <div class="sg">
+      <div class="sg-lbl">Listings &amp; Media</div>
+      <button class="ni" onclick="nav('autotrader',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>Auto Trader<span class="nb b" id="nb-at">0</span></button>
+      <button class="ni" onclick="nav('instagram',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Instagram<span class="nb a" id="nb-ig">0</span></button>
+    </div>
+  </nav>
+  <div class="sfooter">
+    <div class="user-row"><div class="av">SA</div><div><div class="uname">SA Motors (TRIAL TASK) London</div><div class="urole">Owner · Full Access</div></div></div>
+  </div>
+</aside>
+
+<!-- ════════════════ MAIN ════════════════ -->
+<main class="main">
+  <div class="topbar">
+    <button class="menu-btn" onclick="toggleSB()"><svg width="19" height="19" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+    <div class="tb-title" id="tb-title">Dashboard</div>
+    <div class="tb-right">
+      <div class="sbar"><svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search plate or model..." id="searchInput" oninput="handleSearch(this.value)"></div>
+      <button class="btn btn-p btn-sm" onclick="openM('quickadd')">+ Add</button>
+    </div>
+  </div>
+
+  <!-- ═══ DASHBOARD ═══ -->
+  <div class="page active" id="page-dashboard">
+    <div style="margin-bottom:14px;display:flex;align-items:center;gap:12px;">
+      <div><div style="font-size:18px;font-weight:800;letter-spacing:-.5px;">SA Motors (TRIAL TASK)</div><div style="font-size:11.5px;color:var(--text3);" id="dash-date"></div></div>
+    </div>
+    <div id="dash-alerts"></div>
+    <div class="g5" style="margin-bottom:13px;" id="dash-stats"></div>
+    <div class="g2" style="margin-bottom:13px;">
+      <div class="card"><div class="ch"><div class="ct">Monthly Gross Profit</div></div><div class="chart-wrap" id="profit-chart"></div></div>
+      <div class="card"><div class="ch"><div class="ct">Quick Actions</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+          <button class="btn btn-green" style="padding:12px;flex-direction:column;gap:5px;font-size:12px;justify-content:center;" onclick="nav('sellcar',document.querySelector('[onclick*=sellcar]'))">🔑<br><strong>Sell a Car</strong></button>
+          <button class="btn btn-amber" style="padding:12px;flex-direction:column;gap:5px;font-size:12px;justify-content:center;" onclick="nav('receipts',document.querySelector('[onclick*=receipts]'))">📷<br><strong>Scan Receipt</strong></button>
+          <button class="btn btn-b" style="padding:12px;flex-direction:column;gap:5px;font-size:12px;justify-content:center;" onclick="nav('viewings',document.querySelector('[onclick*=viewings]'))">📅<br><strong>Book Viewing</strong></button>
+          <button class="btn btn-g" style="padding:12px;flex-direction:column;gap:5px;font-size:12px;justify-content:center;" onclick="nav('banking',document.querySelector('[onclick*=banking]'))">🏦<br><strong>Banking</strong></button>
+        </div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:13px;">
+      <div class="card"><div class="ch"><div class="ct">Stock — Days in Stock</div></div><div id="days-list" style="max-height:240px;overflow-y:auto;"></div></div>
+      <div class="card"><div class="ch"><div class="ct">Top Profit Cars</div></div><div id="top-profit"></div></div>
+    </div>
+    <div id="dash-media-widgets"></div>
+    <div class="aip" id="dash-ai"></div>
+  </div>
+
+  <!-- ═══ STOCK ═══ -->
+  <div class="page" id="page-stock">
+    <div class="sh">
+      <div class="stitle">Current Stock <span style="font-size:12px;color:var(--text3);font-weight:400;" id="stock-count"></span></div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;">
+        <button class="btn btn-g btn-sm" onclick="exportStock()">📊 CSV</button>
+        <button class="btn btn-amber btn-sm" onclick="openM('addexpense')">💸 Log Cost</button>
+        <button class="btn btn-p btn-sm" onclick="openM('addvehicle')">+ Add Vehicle</button>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="filterStock('all',this)">All</button>
+      <button class="tab" onclick="filterStock('website',this)">Website</button>
+      <button class="tab" onclick="filterStock('autotrader',this)">Auto Trader</button>
+      <button class="tab" onclick="filterStock('needs',this)">Needs work</button>
+      <button class="tab" onclick="filterStock('ready',this)">Ready</button>
+    </div>
+    <div class="card"><div class="tw"><table>
+      <thead><tr><th>Vehicle</th><th>Plate</th><th>Source</th><th>Investor</th><th>Total Cost</th><th>Days</th><th>Website</th><th>Auto Trader</th><th>Left to do</th><th>Actions</th></tr></thead>
+      <tbody id="stock-tbody"></tbody>
+    </table></div></div>
+  </div>
+
+  <!-- ═══ SOLD ═══ -->
+  <div class="page" id="page-sold">
+    <div class="sh">
+      <div class="stitle">Sold History</div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;">
+        <select class="fi" style="width:auto;padding:5px 9px;font-size:11.5px;" id="sold-filter" onchange="renderSold()"><option value="">All Months</option></select>
+        <button class="btn btn-g btn-sm" onclick="exportSold()">📊 Export</button>
+      </div>
+    </div>
+    <div class="card"><div class="tw"><table>
+      <thead><tr><th>Month</th><th>Vehicle</th><th>Plate</th><th>Date Acquired</th><th>Date Sold</th><th>Source</th><th>Days</th><th>Cost</th><th>Sold</th><th>Profit</th><th>Investor</th><th>Breakdown</th></tr></thead>
+      <tbody id="sold-tbody"></tbody>
+    </table></div></div>
+  </div>
+
+  <!-- ═══ COLLECTIONS & DELIVERIES ═══ -->
+  <div class="page" id="page-collections">
+    <div class="sh"><div class="stitle">Collections &amp; Deliveries</div><button class="btn btn-p btn-sm" onclick="openM('addcollection')">+ Add Entry</button></div>
+    <div class="g4" style="margin-bottom:13px;" id="col-stats"></div>
+    <div class="g2">
+      <div class="card">
+        <div class="ch"><div class="ct">📦 Pending Collections</div></div>
+        <div id="collections-list"></div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct">🚚 Pending Deliveries</div></div>
+        <div id="deliveries-list"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:13px;">
+      <div class="ch"><div class="ct">All Movements</div></div>
+      <div class="tw"><table>
+        <thead><tr><th>Type</th><th>Vehicle</th><th>Plate</th><th>Date</th><th>From/To</th><th>Driver</th><th>Cost</th><th>Status</th></tr></thead>
+        <tbody id="col-tbody"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ═══ SERVICE HISTORY ═══ -->
+  <div class="page" id="page-servicehistory">
+    <div class="sh"><div class="stitle">Service Invoices</div><button class="btn btn-p btn-sm" onclick="openM('addservice')">+ Create Invoice</button></div>
+    <div class="aip"><div class="ailabel">🧾 Service Invoice Maker</div><div class="aitext">Create instant service invoices for cars that were owner serviced or serviced off system. Save mileage, service date, invoice type, notes and an optional photo so each car has a printable service proof trail.</div></div>
+    <div class="card"><div class="tw"><table>
+      <thead><tr><th>Vehicle</th><th>Plate</th><th>Invoice Type</th><th>Service Date</th><th>Mileage</th><th>Invoice Ref</th><th>Notes</th><th>Actions</th></tr></thead>
+      <tbody id="service-tbody"></tbody>
+    </table></div></div>
+  </div>
+
+  <!-- ═══ MOT TRACKER ═══ -->
+  <div class="page" id="page-mot">
+    <div class="sh"><div class="stitle">MOT Tracker</div><div style="display:flex;gap:7px;"><select class="fi" style="width:auto;padding:4px 8px;font-size:11px;" id="mot-filter" onchange="renderMOT()"><option value="current">Current stock</option><option value="inbound">Inbound</option><option value="sold">Sold</option><option value="all">All</option></select><button class="btn btn-b btn-sm" onclick="checkAllMOT()">🔍 Check All via DVSA</button></div></div>
+    <div class="aip"><div class="ailabel">🔍 MOT Intelligence</div><div class="aitext">MOT expiry dates are tracked for all stock. Vehicles expiring in under 90 days are flagged. The DVSA MOT History API can be called to get full history and advisories. Vehicles with repeat advisories are highlighted for pre-sale attention.</div></div>
+    <div id="mot-alerts" style="margin-bottom:13px;"></div>
+    <div class="gauto" id="mot-grid"></div>
+  </div>
+
+  <!-- ═══ INSURANCE ═══ -->
+  <div class="page" id="page-insurance">
+    <div class="sh"><div class="stitle">Insurance &amp; SORN Check</div><select class="fi" style="width:auto;padding:4px 8px;font-size:11px;" id="ins-filter" onchange="renderInsurance()"><option value="current">Current stock</option><option value="inbound">Inbound</option><option value="sold">Sold</option><option value="all">All</option></select></div>
+    <div class="aip">
+      <div class="ailabel">🛡️ MIB Vehicle Check</div>
+      <div class="aitext">Check any vehicle's insurance and SORN status via the MIB Navigate portal. Enter a reg plate below. This uses the MIB enquiry service at enquiry.navigate.mib.org.uk. Green = insured, Red = uninsured/SORN. Always check before purchase.</div>
+    </div>
+    <div class="card" style="margin-bottom:13px;">
+      <div class="ch"><div class="ct">Check Vehicle Insurance Status</div></div>
+      <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+        <div style="flex:0 0 200px;"><label class="fl">Reg Plate</label><input class="fi fi-reg" id="ins-plate" placeholder="AB12 XYZ" oninput="this.value=this.value.toUpperCase()"></div>
+        <button class="btn btn-b" onclick="checkInsurance()" style="margin-bottom:0">Check Insurance</button>
+        <a href="https://enquiry.navigate.mib.org.uk/checkyourvehicle" target="_blank" class="btn btn-g">Open MIB Portal ↗</a>
+      </div>
+      <div id="ins-result" style="margin-top:13px;"></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Stock Insurance Status Log</div></div>
+      <div class="tw"><table>
+        <thead><tr><th>Vehicle</th><th>Plate</th><th>Last Checked</th><th>Status</th><th>Notes</th><th>Action</th></tr></thead>
+        <tbody id="ins-tbody"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ═══ VIEWINGS ═══ -->
+  <div class="page" id="page-viewings">
+    <div class="sh"><div class="stitle">Viewings</div><button class="btn btn-p btn-sm" onclick="openM('addviewing')">+ Book Viewing</button></div>
+    <div class="g4" style="margin-bottom:13px;" id="viewing-stats"></div>
+    <div class="g2">
+      <div class="card">
+        <div class="ch"><div class="ct" id="cal-lbl"></div><div style="display:flex;gap:5px;"><button class="btn btn-g btn-sm" onclick="calPrev()">‹</button><button class="btn btn-g btn-sm" onclick="calNext()">›</button></div></div>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:6px;">
+          <div class="cal-hdr">Mon</div><div class="cal-hdr">Tue</div><div class="cal-hdr">Wed</div><div class="cal-hdr">Thu</div><div class="cal-hdr">Fri</div><div class="cal-hdr">Sat</div><div class="cal-hdr">Sun</div>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div style="margin-top:10px;font-size:10px;color:var(--text3);">🟡 dot = viewing booked</div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct">Upcoming Viewings</div></div>
+        <div id="viewings-list"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:13px;">
+      <div class="ch"><div class="ct">All Viewings</div></div>
+      <div class="tw"><table>
+        <thead><tr><th>Date</th><th>Time</th><th>Customer</th><th>Phone</th><th>Vehicle</th><th>Status</th><th>Notes</th><th>Outcome</th></tr></thead>
+        <tbody id="viewings-tbody"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ═══ SELL A CAR ═══ -->
+  <div class="page" id="page-sellcar">
+    <div class="sh"><div class="stitle">🔑 Sell a Car — Generate Investor Invoice</div></div>
+    <div class="aip"><div class="ailabel">🔑 Quick Guide</div><div class="aitext">Search reg → confirm details → enter sale price → generate SA Motors (TRIAL TASK) invoice. The invoice includes your logo, full cost breakdown, profit calculation, and investor share. Print or PDF to send directly to investor.</div></div>
+    <div class="card" style="margin-bottom:13px;">
+      <div class="ch"><div class="ct">Step 1 — Find Vehicle</div></div>
+      <div style="display:flex;gap:8px;margin-bottom:13px;">
+        <input class="fi fi-reg" id="sell-reg" placeholder="Enter Reg Plate..." oninput="searchReg(this.value)" style="max-width:230px;font-size:17px;">
+        <button class="btn btn-p" onclick="searchReg(document.getElementById('sell-reg').value)">Find</button>
+      </div>
+      <div style="display:none;" id="reg-result">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:11px;">
+          <div style="font-size:28px;">🚗</div>
+          <div><div style="font-size:16px;font-weight:800;" id="rr-model">—</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);" id="rr-plate">—</div></div>
+          <div style="margin-left:auto;text-align:right;"><div style="font-size:10px;color:var(--text3);">Total Cost In</div><div style="font-size:19px;font-weight:800;color:var(--amber);" id="rr-cost">—</div></div>
+        </div>
+        <div class="g3">
+          <div><div class="fl">Investor</div><div style="font-size:13px;font-weight:700;" id="rr-investor">—</div></div>
+          <div><div class="fl">Source</div><div style="font-size:13px;font-weight:700;" id="rr-source">—</div></div>
+          <div><div class="fl">Days in Stock</div><div style="font-size:13px;font-weight:700;" id="rr-days">—</div></div>
+        </div>
+        <div id="rr-costs" style="margin-top:9px;"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:13px;display:none;" id="sell-form">
+      <div class="ch"><div class="ct">Step 2 — Sale Details</div></div>
+      <div class="g2">
+        <div class="fg"><label class="fl">Sale Price (£)</label><input class="fi" id="sell-price" type="number" placeholder="e.g. 12050" oninput="updateCalc()"></div>
+        <div class="fg"><label class="fl">Investor</label><select class="fs" id="sell-investor"><option>MP</option><option>James</option><option>Daniel</option><option>Joseph</option><option>Jeff</option><option>Adam</option><option>Anthony</option><option>Leonardo</option></select></div>
+      </div>
+      <div class="g2">
+        <div class="fg"><label class="fl">Investor Share %</label><select class="fs" id="sell-share" onchange="updateCalc()"><option value="30">30%</option><option value="40">40%</option><option value="50">50%</option><option value="25">25%</option><option value="20">20%</option><option value="0">0% (MP Only)</option></select></div>
+        <div class="fg"><label class="fl">Sale Date</label><input class="fi" type="date" id="sell-date"></div>
+      </div>
+      <div style="background:var(--s2);border:1px solid var(--border);border-radius:var(--rs);padding:13px;margin-bottom:13px;">
+        <div class="sl" style="margin-bottom:9px;">Live Calculation</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:12.5px;"><span style="color:var(--text3)">Sale Price</span><span id="c-sale" style="font-weight:700">—</span></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:12.5px;"><span style="color:var(--text3)">Total Cost</span><span id="c-cost" style="font-weight:700;color:var(--amber)">—</span></div>
+        <div style="height:1px;background:var(--border);margin:7px 0;"></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px;"><span style="font-weight:700">Gross Profit</span><span id="c-profit" style="font-weight:800;font-size:15px;color:var(--green)">—</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12.5px;"><span style="color:var(--text3)">Investor Share (<span id="c-pct">30</span>%)</span><span id="c-inv" style="font-weight:700;color:var(--purple)">—</span></div>
+      </div>
+      <button class="btn btn-p" style="width:100%;padding:11px;font-size:14px;" onclick="generateInvoice()">✅ Generate SA Motors (TRIAL TASK) Invoice</button>
+    </div>
+    <div id="invoice-output" style="display:none;">
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div class="ch" style="padding:13px 17px;border-bottom:1px solid var(--border);">
+          <div class="ct">SA Motors (TRIAL TASK) Investor Invoice — Ready</div>
+          <div style="display:flex;gap:6px;"><button class="btn btn-g btn-sm" onclick="printInv()">🖨️ Print / PDF</button></div>
+        </div>
+        <div style="padding:14px;"><div id="invoice-render"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ TASKS ═══ -->
+  <div class="page" id="page-tasks">
+    <div class="sh"><div class="stitle">Tasks</div><button class="btn btn-p btn-sm" onclick="openM('addtask')">+ New Task</button></div>
+    <div class="g2">
+      <div class="card"><div class="ch"><div class="ct" style="color:var(--red)">🔴 Not Listed</div></div><div id="tasks-nl"></div></div>
+      <div class="card"><div class="ch"><div class="ct" style="color:var(--amber)">🟡 45+ Days in Stock</div></div><div id="tasks-age"></div></div>
+    </div>
+    <div class="card" style="margin-top:13px;">
+      <div class="ch"><div class="ct">Custom Tasks</div><button class="btn btn-g btn-sm" onclick="openM('addtask')">+</button></div>
+      <div id="custom-tasks">
+        <div class="li"><div class="ldot" style="background:var(--amber)"></div><div class="lc"><div class="lt">Call DVLA re MOT — Audi A6 VE16 TNO</div><div class="lm">Action needed</div><div class="lv">🚗 VE16 TNO</div></div><span class="badge ba">In Progress</span></div>
+        <div class="li"><div class="ldot" style="background:var(--red)"></div><div class="lc"><div class="lt">Mazda CX3 — electrician (cig port &amp; i-stop)</div><div class="lm">Confirm completion</div><div class="lv">🚗 AY17 YWX</div></div><span class="badge br">Urgent</span></div>
+        <div class="li"><div class="ldot" style="background:var(--amber)"></div><div class="lc"><div class="lt">Mercedes C220D — leather shop + service history</div><div class="lm">Needs main dealer check</div><div class="lv">🚗 SE66 OFZ</div></div><span class="badge ba">Waiting</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FINES ═══ -->
+  <div class="page" id="page-fines">
+    <div class="sh"><div class="stitle">Fines &amp; Penalties</div><button class="btn btn-p btn-sm" onclick="openM('addfine')">+ Log Fine</button></div>
+    <div class="g4" style="margin-bottom:13px;" id="fine-stats"></div>
+    <div class="card">
+      <div class="ch"><div class="ct">All Fines</div></div>
+      <div class="tw"><table>
+        <thead><tr><th>Date</th><th>Vehicle</th><th>Type</th><th>Amount</th><th>Due Date</th><th>Status</th><th>Reference</th><th>Notes</th><th>Action</th></tr></thead>
+        <tbody id="fine-tbody"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ═══ FINANCE LOG ═══ -->
+  <div class="page" id="page-expenses">
+    <div class="sh"><div class="stitle">Finance Log</div><div style="display:flex;gap:7px;flex-wrap:wrap;"><button class="btn btn-g btn-sm" onclick="exportFinance()">📊 CSV</button><button class="btn btn-p btn-sm" onclick="openM('addexpense')">+ Log Entry</button></div></div>
+    <div class="card" style="margin-bottom:13px;">
+      <div class="ch"><div class="ct">Quick Log</div></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;">
+        <div style="flex:0 0 130px;"><label class="fl">Reg Plate</label><input class="fi fi-reg" id="ql-plate" placeholder="AB12 XYZ" oninput="this.value=this.value.toUpperCase()" style="font-size:15px;"></div>
+        <div style="flex:1;min-width:170px;"><label class="fl">Description</label><input class="fi" id="ql-desc" placeholder="e.g. Front bumper, alloy refurb..."></div>
+        <div style="flex:0 0 95px;"><label class="fl">Amount (£)</label><input class="fi" id="ql-amount" type="number" placeholder="0.00" step="0.01"></div>
+        <div style="flex:0 0 115px;"><label class="fl">Category</label><select class="fs" id="ql-cat"><option>Parts</option><option>Labour</option><option>Valet</option><option>MOT</option><option>Transport</option><option>Fuel</option><option>Warranty</option><option>Fees</option><option>Fixed Overhead</option><option>Other</option></select></div>
+        <div><button class="btn btn-p" id="ql-btn" onclick="quickLog()" style="margin-top:17px;">+ Log</button></div>
+      </div>
+    </div>
+    <div class="g4" style="margin-bottom:13px;" id="fin-stats"></div>
+    <div class="card"><div class="ch"><div class="ct">All Entries <span id="fin-count"></span></div><select class="fi" style="width:auto;padding:4px 8px;font-size:11px;" id="fin-filter" onchange="renderFinance()"><option value="">All Categories</option><option>Parts</option><option>Labour</option><option>Valet</option><option>MOT</option><option>Transport</option><option>Fuel</option><option>Warranty</option><option>Fees</option><option>Fixed Overhead</option><option>Other</option></select></div><div id="finance-log"></div></div>
+  </div>
+
+  <!-- ═══ RECEIPTS ═══ -->
+  <div class="page" id="page-receipts">
+    <div class="sh"><div class="stitle">Receipts &amp; AI Scan</div><button class="btn btn-p btn-sm" onclick="openM('addreceipt')">📷 Add Receipt</button></div>
+    <div class="aip"><div class="ailabel">📷 AI Receipt Scanner</div><div class="aitext">Take a photo of any receipt — petrol, parts, repairs, MOT, etc. Enter the vehicle reg and category. The AI reads the receipt and automatically extracts the amount, supplier, and date, then adds it to that car's costs and the finance log. All receipts are stored here for reference.</div></div>
+    <div class="g4" style="margin-bottom:13px;" id="receipt-stats"></div>
+    <div class="card" style="margin-bottom:13px;">
+      <div class="ch"><div class="ct">Add Receipt</div></div>
+      <div class="g2">
+        <div>
+          <div class="upload-zone" onclick="document.getElementById('receipt-file').click()" id="receipt-drop">
+            <input type="file" id="receipt-file" accept="image/*" onchange="handleReceiptFile(this)">
+            <div style="font-size:30px;margin-bottom:8px;">📷</div>
+            <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Take or Upload Photo</div>
+            <div style="font-size:11px;color:var(--text3);">Click to browse or drag &amp; drop</div>
+          </div>
+          <div id="receipt-preview" style="margin-top:10px;display:none;"><img id="receipt-preview-img" style="width:100%;border-radius:var(--rs);max-height:200px;object-fit:contain;" src="" alt=""></div>
+        </div>
+        <div>
+          <div class="fg"><label class="fl">Reg Plate</label><input class="fi fi-reg" id="r-plate" placeholder="AB12 XYZ" oninput="this.value=this.value.toUpperCase()" style="font-size:15px;"></div>
+          <div class="fg"><label class="fl">Category</label><select class="fs" id="r-cat"><option>Fuel</option><option>Parts</option><option>Labour</option><option>Valet</option><option>MOT</option><option>Transport</option><option>Warranty</option><option>Fees</option><option>Fixed Overhead</option><option>Other</option></select></div>
+          <div class="fg"><label class="fl">Notes (optional)</label><input class="fi" id="r-notes" placeholder="e.g. fuel, front bumper..."></div>
+          <div class="fg"><label class="fl">Amount (£) — AI will extract from image</label><input class="fi" id="r-amount" type="number" placeholder="Or enter manually" step="0.01"></div>
+          <button class="btn btn-p" style="width:100%;" onclick="processReceipt()" id="receipt-btn">✨ Process Receipt</button>
+        </div>
+      </div>
+    </div>
+    <div class="card"><div class="ch"><div class="ct">All Receipts</div></div><div id="receipts-grid" style="display:flex;flex-direction:column;gap:8px;"></div></div>
+  </div>
+
+  <!-- ═══ BANKING ═══ -->
+  <div class="page" id="page-banking">
+    <div class="sh"><div class="stitle">Routes & Planning</div><button class="btn btn-b btn-sm" onclick="connectBarclays()">🗺️ Route Planner</button></div>
+    <div class="aip">
+      <div class="ailabel">🗺️ Route Planner</div>
+      <div class="aitext">Group incoming cars by region, see pending days, link multiple cars into one run, and plan pickup routes without jumping back and forth into Google Maps.</div>
+    </div>
+    <div class="g4" style="margin-bottom:13px;" id="bank-stats"></div>
+    <div class="g2" style="margin-bottom:13px;">
+      <div class="card">
+        <div class="ch"><div class="ct">🏦 Account Summary</div><button class="btn btn-g btn-sm" onclick="connectBarclays()">Refresh</button></div>
+        <div id="bank-accounts"></div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct">⚡ Reconciliation Status</div></div>
+        <div id="recon-status"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:13px;">
+      <div class="ch"><div class="ct">Recent Transactions</div><div style="display:flex;gap:6px;"><select class="fi" style="width:auto;padding:4px 8px;font-size:11px;" id="tx-filter" onchange="renderBanking()"><option value="">All</option><option value="unmatched">Unmatched</option><option value="in">Credits</option><option value="out">Debits</option></select></div></div>
+      <div id="bank-txs"></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">💳 Investor Payout Centre</div></div>
+      <div class="aip" style="margin-bottom:11px;"><div class="ailabel">Payment Initiation</div><div class="aitext">Link multiple incoming cars into one trip, compare the nearest airport area, and keep a visible list of what is still waiting to be booked or collected.</div></div>
+      <div id="investor-payouts"></div>
+    </div>
+  </div>
+
+  <!-- ═══ INVESTOR INVOICES ═══ -->
+  <div class="page" id="page-invoices">
+    <div class="sh"><div class="stitle">Investor Invoices</div><button class="btn btn-p btn-sm" onclick="nav('sellcar',document.querySelector('[onclick*=sellcar]'))">🔑 Sell a Car</button></div>
+    <div class="card"><div id="inv-list"><div style="color:var(--text3);font-size:13px;text-align:center;padding:22px;">No invoices yet — use <strong>Sell a Car</strong> to generate your first one.</div></div></div>
+  </div>
+
+  <!-- ═══ INVESTOR LEDGER ═══ -->
+  <div class="page" id="page-investors">
+    <div class="sh"><div class="stitle">Investor Budget</div><button class="btn btn-p btn-sm" onclick="editInvestorBudget()">Edit Balances</button></div>
+    <div class="aip"><div class="ailabel">💷 Investor Budget</div><div class="aitext" id="inv-summary"></div></div>
+    <div class="gauto" id="inv-cards" style="margin-bottom:13px;"></div>
+    <div class="card" style="margin-bottom:13px;"><div class="ch"><div class="ct">Profit Since Nov 2025</div></div><div class="chart-wrap" id="inv-chart"></div></div>
+    <div class="card">
+      <div class="ch"><div class="ct">Vehicle Assignments by Investor</div></div>
+      <div class="tw"><table>
+        <thead><tr><th>Investor</th><th>Vehicle</th><th>Plate</th><th>Cost In</th><th>Sale</th><th>Profit</th><th>Their Share</th><th>Status</th></tr></thead>
+        <tbody id="inv-vehicle-tbody"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ═══ WAGES ═══ -->
+  <div class="page" id="page-wages">
+    <div class="sh"><div class="stitle">Staff &amp; Wages</div><button class="btn btn-p btn-sm" onclick="openM('addstaff')">+ Add Staff</button></div>
+    <div class="g4" style="margin-bottom:13px;" id="wage-stats"></div>
+    <div class="gauto" id="staff-grid" style="margin-bottom:13px;"></div>
+    <div class="card">
+      <div class="ch"><div class="ct">Payment History</div><button class="btn btn-p btn-sm" onclick="openM('logpayment')">+ Log Payment</button></div>
+      <div class="tw"><table>
+        <thead><tr><th>Staff</th><th>Date</th><th>Amount</th><th>Period</th><th>Method</th><th>Notes</th></tr></thead>
+        <tbody id="wage-tbody"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ═══ VAT ═══ -->
+  <div class="page" id="page-vat">
+    <div class="sh"><div class="stitle">VAT Tracker</div></div>
+    <div class="aip"><div class="ailabel">📋 VAT Manager</div><div class="aitext">VAT is automatically tracked from all sales invoices and purchase records. The quarter summary shows VAT collected on sales, VAT paid on purchases (input tax), and the net VAT owed to HMRC. Always review with your accountant before submitting.</div></div>
+    <div class="g4" style="margin-bottom:13px;" id="vat-stats"></div>
+    <div class="g2">
+      <div class="card">
+        <div class="ch"><div class="ct">VAT Collected (Output Tax)</div></div>
+        <div id="vat-output"></div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct">VAT Paid (Input Tax)</div></div>
+        <div id="vat-input"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:13px;">
+      <div class="ch"><div class="ct">Quarter Summary</div></div>
+      <div id="vat-quarter"></div>
+    </div>
+  </div>
+
+  <!-- ═══ REPORTS ═══ -->
+  <div class="page" id="page-reports">
+    <div class="sh"><div class="stitle">Reports &amp; Analytics</div><select class="fi" style="width:auto;padding:5px 9px;font-size:11.5px;" id="report-month" onchange="renderReports()"><option value="all">All Time</option></select></div>
+    <div class="aip" id="report-ai"></div>
+    <div class="g5" style="margin-bottom:13px;" id="report-kpis"></div>
+    <div class="g2">
+      <div class="card"><div class="ch"><div class="ct">Top Profit Cars</div></div><div id="report-bars" style="max-height:300px;overflow-y:auto;"></div></div>
+      <div class="card"><div class="ch"><div class="ct">Monthly Trend</div></div><div class="chart-wrap" id="report-chart"></div></div>
+    </div>
+    <div class="card" style="margin-top:13px;">
+      <div class="ch"><div class="ct">💡 Recommended Next Features</div></div>
+      <div id="recommendations"></div>
+    </div>
+  </div>
+
+  <!-- ═══ AUTO TRADER ═══ -->
+  <div class="page" id="page-autotrader">
+    <div class="sh">
+      <div class="stitle">Auto Trader <span style="font-size:11px;color:var(--text3);font-weight:400;" id="at-conn-label"></span></div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;">
+        <button class="btn btn-g btn-sm" onclick="openM('at-settings')">⚙️ Settings</button>
+        <button class="btn btn-b btn-sm" onclick="connectAutoTrader()">🔗 Connect</button>
+        <button class="btn btn-p btn-sm" onclick="openM('at-new')">+ New Listing</button>
+      </div>
+    </div>
+    <div class="g5" style="margin-bottom:13px;" id="at-stats"></div>
+    <div class="tabs">
+      <button class="tab active" onclick="filterAT('all',this)">All</button>
+      <button class="tab" onclick="filterAT('draft',this)">Drafts</button>
+      <button class="tab" onclick="filterAT('ready',this)">Ready</button>
+      <button class="tab" onclick="filterAT('live',this)">Live</button>
+      <button class="tab" onclick="filterAT('needs_review',this)">Needs Review</button>
+    </div>
+    <div id="at-listing-grid"></div>
+  </div>
+
+  <!-- ═══ INSTAGRAM ═══ -->
+  <div class="page" id="page-instagram">
+    <div class="sh">
+      <div class="stitle">Instagram <span style="font-size:11px;color:var(--text3);font-weight:400;" id="ig-conn-label"></span></div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;">
+        <button class="btn btn-g btn-sm" onclick="openM('ig-settings')">⚙️ Settings</button>
+        <button class="btn btn-amber btn-sm" onclick="connectInstagram()">📱 Connect</button>
+        <button class="btn btn-p btn-sm" onclick="openM('ig-new')">+ New Post</button>
+      </div>
+    </div>
+    <div class="g4" style="margin-bottom:13px;" id="ig-stats"></div>
+    <div class="tabs">
+      <button class="tab active" onclick="filterIG('all',this)">All</button>
+      <button class="tab" onclick="filterIG('draft',this)">Drafts</button>
+      <button class="tab" onclick="filterIG('scheduled',this)">Scheduled</button>
+      <button class="tab" onclick="filterIG('posted',this)">Posted</button>
+    </div>
+    <div id="ig-post-grid"></div>
+  </div>
+
+  <!-- ═══ MEDIA MANAGER (modal-driven) ═══ -->
+
+</main>
+
+<!-- ════ MOBILE NAV ════ -->
+<nav class="mob-nav"><div class="mob-inner">
+  <button class="mni active" onclick="nav('dashboard',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Home</button>
+  <button class="mni" onclick="nav('stock',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4V7z"/></svg>Stock</button>
+  <button class="mni" onclick="nav('viewings',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Viewings</button>
+  <button class="mni" onclick="nav('sellcar',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Sell</button>
+  <button class="mni" onclick="nav('reports',this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Reports</button>
+</div></nav>
+
+<!-- ════ MODALS ════ -->
+<div class="moverlay" id="m-quickadd">
+  <div class="modal" style="max-width:300px;">
+    <div class="mh"><div class="mt">Quick Add</div><button class="mclose" onclick="closeM('quickadd')">✕</button></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+      <button class="btn btn-g" style="padding:13px;flex-direction:column;gap:5px;font-size:11.5px;" onclick="closeM('quickadd');openM('addvehicle')">🚗<br>Add Vehicle</button>
+      <button class="btn btn-green" style="padding:13px;flex-direction:column;gap:5px;font-size:11.5px;" onclick="closeM('quickadd');nav('sellcar',document.querySelector('[onclick*=sellcar]'))">🔑<br>Sell a Car</button>
+      <button class="btn btn-amber" style="padding:13px;flex-direction:column;gap:5px;font-size:11.5px;" onclick="closeM('quickadd');openM('addreceipt')">📷<br>Scan Receipt</button>
+      <button class="btn btn-b" style="padding:13px;flex-direction:column;gap:5px;font-size:11.5px;" onclick="closeM('quickadd');openM('addviewing')">📅<br>Book Viewing</button>
+      <button class="btn btn-g" style="padding:13px;flex-direction:column;gap:5px;font-size:11.5px;" onclick="closeM('quickadd');openM('addfine')">⚠️<br>Log Fine</button>
+      <button class="btn btn-g" style="padding:13px;flex-direction:column;gap:5px;font-size:11.5px;" onclick="closeM('quickadd');openM('addexpense')">💸<br>Log Cost</button>
+    </div>
+  </div>
+</div>
+
+<div class="moverlay" id="m-addvehicle">
+  <div class="modal">
+    <div class="mh"><div class="mt">Add Vehicle</div><button class="mclose" onclick="closeM('addvehicle')">✕</button></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Reg Plate</label><input class="fi fi-reg" id="nv-plate" placeholder="AB24 XYZ" oninput="this.value=this.value.toUpperCase()"></div>
+      <div class="fg"><label class="fl">Make &amp; Model</label><input class="fi" id="nv-model" placeholder="e.g. VW Golf GTI"></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Purchase Price (£)</label><input class="fi" type="number" id="nv-price" placeholder="0.00"></div>
+      <div class="fg"><label class="fl">Source</label><select class="fs" id="nv-source"><option>Copart</option><option>Motorway</option><option>Carwow</option><option>Facebook</option><option>Private</option><option>Part Exchange</option><option>BCA</option></select></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Investor</label><select class="fs" id="nv-investor"><option>MP</option><option>James</option><option>Daniel</option><option>Joseph</option><option>Jeff</option><option>Adam</option><option>Anthony</option><option>Leonardo</option></select></div>
+      <div class="fg"><label class="fl">Recon Cost (£)</label><input class="fi" type="number" id="nv-recon" placeholder="0.00"></div>
+    </div>
+    <div class="fg"><label class="fl">Notes / Status</label><textarea class="fta" id="nv-notes" placeholder="Prep notes, status..."></textarea></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;">
+      <button class="btn btn-g" onclick="closeM('addvehicle')">Cancel</button>
+      <button class="btn btn-p" onclick="addVehicle()">Add to Stock</button>
+    </div>
+  </div>
+</div>
+
+<div class="moverlay" id="m-addexpense">
+  <div class="modal">
+    <div class="mh"><div class="mt">Log Finance Entry</div><button class="mclose" onclick="closeM('addexpense')">✕</button></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Reg Plate (optional)</label><input class="fi fi-reg" id="exp-plate" placeholder="AB12 XYZ" oninput="this.value=this.value.toUpperCase()" style="font-size:15px;"></div>
+      <div class="fg"><label class="fl">Category</label><select class="fs" id="exp-cat"><option>Parts</option><option>Labour</option><option>Valet</option><option>MOT</option><option>Transport</option><option>Fuel</option><option>Warranty</option><option>Fees</option><option>Fixed Overhead</option><option>Other</option></select></div>
+    </div>
+    <div class="fg"><label class="fl">Description</label><input class="fi" id="exp-desc" placeholder="e.g. Front bumper replacement..."></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Amount (£)</label><input class="fi" id="exp-amount" type="number" placeholder="0.00" step="0.01"></div>
+      <div class="fg"><label class="fl">Date</label><input class="fi" id="exp-date" type="date"></div>
+    </div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;">
+      <button class="btn btn-g" onclick="closeM('addexpense')">Cancel</button>
+      <button class="btn btn-p" onclick="logExpModal()">Log Entry</button>
+    </div>
+  </div>
+</div>
+
+<div class="moverlay" id="m-addviewing">
+  <div class="modal">
+    <div class="mh"><div class="mt">Book Viewing</div><button class="mclose" onclick="closeM('addviewing')">✕</button></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Customer Name</label><input class="fi" id="vw-name" placeholder="Full name"></div>
+      <div class="fg"><label class="fl">Phone</label><input class="fi" type="tel" id="vw-phone" placeholder="07xxx xxxxxx"></div>
+    </div>
+    <div class="fg"><label class="fl">Vehicle Interest</label><select class="fs" id="vw-vehicle"><option value="">— Select from stock —</option></select></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Date</label><input class="fi" type="date" id="vw-date"></div>
+      <div class="fg"><label class="fl">Time</label><input class="fi" type="time" id="vw-time"></div>
+    </div>
+    <div class="g3">
+      <div class="fg"><label class="fl">Lead Source</label><select class="fs" id="vw-source"><option>Website</option><option>Auto Trader</option><option>CarGurus</option><option>Word of Mouth</option><option>Recurring</option><option>Other</option></select></div>
+      <div class="fg"><label class="fl">Finance?</label><select class="fs" id="vw-finance"><option>No</option><option>Yes</option><option>Maybe</option></select></div>
+      <div class="fg"><label class="fl">Delivery?</label><select class="fs" id="vw-delivery"><option>No</option><option>Yes</option><option>Maybe</option></select></div>
+    </div>
+    <div class="fg"><label class="fl">Notes</label><textarea class="fta" id="vw-notes" placeholder="Finance interest, part exchange, bringing partner..."></textarea></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;">
+      <button class="btn btn-g" onclick="closeM('addviewing')">Cancel</button>
+      <button class="btn btn-p" onclick="addViewing()">Book Viewing</button>
+    </div>
+  </div>
+</div>
+
+<div class="moverlay" id="m-addcollection">
+  <div class="modal">
+    <div class="mh"><div class="mt">Log Collection / Delivery</div><button class="mclose" onclick="closeM('addcollection')">✕</button></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Type</label><select class="fs" id="col-type"><option>Collection</option><option>Delivery</option></select></div>
+      <div class="fg"><label class="fl">Reg Plate</label><input class="fi fi-reg" id="col-plate" placeholder="AB12 XYZ" oninput="this.value=this.value.toUpperCase()" style="font-size:15px;"></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Date Won</label><input class="fi" type="date" id="col-won"></div>
+      <div class="fg"><label class="fl">Scheduled Date</label><input class="fi" type="date" id="col-date"></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Driver</label><input class="fi" id="col-driver" placeholder="Name or company"></div>
+      <div class="fg"><label class="fl">Linked Vehicles</label><input class="fi" id="col-link" placeholder="Comma separated plates"></div>
+    </div>
+    <div class="fg"><label class="fl">From / To Address</label><input class="fi" id="col-addr" placeholder="Collection or delivery address (Google Maps autocomplete ready)"></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Cost (£)</label><input class="fi" type="number" id="col-cost" placeholder="0.00"></div>
+      <div class="fg"><label class="fl">Status</label><select class="fs" id="col-status"><option>Pending</option><option>Booked</option><option>Collected</option><option>Delivered</option></select></div>
+    </div>
+    <div class="fg"><label class="fl">Notes</label><textarea class="fta" id="col-notes" placeholder="Any additional notes..."></textarea></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;">
+      <button class="btn btn-g" onclick="closeM('addcollection')">Cancel</button>
+      <button class="btn btn-p" onclick="addCollection()">Log Movement</button>
+    </div>
+  </div>
+</div>
+
+<div class="moverlay" id="m-addservice">
+  <div class="modal">
+    <div class="mh"><div class="mt">Add Service Record</div><button class="mclose" onclick="closeM('addservice')">✕</button></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Reg Plate</label><input class="fi fi-reg" id="svc-plate" placeholder="AB12 XYZ" oninput="this.value=this.value.toUpperCase()" style="font-size:15px;"></div>
+      <div class="fg"><label class="fl">History Type</label><select class="fs" id="svc-type"><option>Full</option><option>Partial</option><option>None — Created</option><option>Electronic Only</option><option>Owner Serviced</option></select></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Last Service Date</label><input class="fi" type="date" id="svc-date"></div>
+      <div class="fg"><label class="fl">Mileage at Service</label><input class="fi" type="number" id="svc-miles" placeholder="e.g. 45000"></div>
+    </div>
+    <div class="fg"><label class="fl">Number of Stamps</label><input class="fi" type="number" id="svc-stamps" placeholder="e.g. 6"></div>
+    <div class="fg"><label class="fl">Notes</label><textarea class="fta" id="svc-notes" placeholder="Details about service history, gaps, what you've added..."></textarea></div>
+    <div class="fg"><label class="fl">Attach Photo (optional)</label><input type="file" class="fi" id="svc-photo" accept="image/*"></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;">
+      <button class="btn btn-g" onclick="closeM('addservice')">Cancel</button>
+      <button class="btn btn-p" onclick="addService()">Save Record</button>
+    </div>
+  </div>
+</div>
+
+<div class="moverlay" id="m-addfine">
+  <div class="modal">
+    <div class="mh"><div class="mt">Log Fine / Penalty</div><button class="mclose" onclick="closeM('addfine')">✕</button></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Vehicle Plate</label><input class="fi fi-reg" id="fn-plate" placeholder="AB12 XYZ" oninput="this.value=this.value.toUpperCase()" style="font-size:15px;"></div>
+      <div class="fg"><label class="fl">Fine Type</label><select class="fs" id="fn-type"><option>PCN — Parking</option><option>PCN — Bus Lane</option><option>PCN — Congestion Zone</option><option>PCN — ULEZ</option><option>Speeding</option><option>Red Light</option><option>DVLA / Admin</option><option>Other</option></select></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Date Issued</label><input class="fi" type="date" id="fn-date"></div>
+      <div class="fg"><label class="fl">Amount (£)</label><input class="fi" type="number" id="fn-amount" placeholder="0.00"></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Due Date</label><input class="fi" type="date" id="fn-due"></div>
+      <div class="fg"><label class="fl">Reference</label><input class="fi" id="fn-ref" placeholder="Fine reference number"></div>
+    </div>
+    <div class="fg"><label class="fl">Notes</label><textarea class="fta" id="fn-notes" placeholder="Details, appeals status..."></textarea></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;">
+      <button class="btn btn-g" onclick="closeM('addfine')">Cancel</button>
+      <button class="btn btn-p" onclick="addFine()">Log Fine</button>
+    </div>
+  </div>
+</div>
+
+<div class="moverlay" id="m-addreceipt">
+  <div class="modal">
+    <div class="mh"><div class="mt">📷 Add Receipt</div><button class="mclose" onclick="closeM('addreceipt')">✕</button></div>
+    <div class="fg">
+      <label class="fl">Upload Photo</label>
+      <div class="upload-zone" onclick="document.getElementById('modal-receipt-file').click()">
+        <input type="file" id="modal-receipt-file" accept="image/*" onchange="handleModalReceiptFile(this)">
+        <div style="font-size:24px;margin-bottom:6px;">📷</div>
+        <div style="font-size:12px;font-weight:600;">Click to upload receipt photo</div>
+      </div>
+      <div id="modal-preview" style="margin-top:8px;display:none;"><img id="modal-preview-img" style="width:100%;border-radius:6px;max-height:160px;object-fit:contain;" src="" alt=""></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Reg Plate</label><input class="fi fi-reg" id="mr-plate" placeholder="AB12 XYZ" oninput="this.value=this.value.toUpperCase()" style="font-size:15px;"></div>
+      <div class="fg"><label class="fl">Category</label><select class="fs" id="mr-cat"><option>Fuel</option><option>Parts</option><option>Labour</option><option>Valet</option><option>MOT</option><option>Transport</option><option>Warranty</option><option>Other</option></select></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Amount (£)</label><input class="fi" id="mr-amount" type="number" placeholder="0.00" step="0.01"></div>
+      <div class="fg"><label class="fl">Notes</label><input class="fi" id="mr-notes" placeholder="e.g. fuel fill-up"></div>
+    </div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;">
+      <button class="btn btn-g" onclick="closeM('addreceipt')">Cancel</button>
+      <button class="btn btn-p" onclick="saveModalReceipt()">Save Receipt</button>
+    </div>
+  </div>
+</div>
+
+<div class="moverlay" id="m-addstaff">
+  <div class="modal">
+    <div class="mh"><div class="mt">Add Staff Member</div><button class="mclose" onclick="closeM('addstaff')">✕</button></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Name</label><input class="fi" id="st-name" placeholder="Full name"></div>
+      <div class="fg"><label class="fl">Role</label><input class="fi" id="st-role" placeholder="e.g. Prep Technician"></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Pay Type</label><select class="fs" id="st-paytype"><option>Weekly</option><option>Monthly</option><option>Daily</option><option>Per Car</option></select></div>
+      <div class="fg"><label class="fl">Rate (£)</label><input class="fi" type="number" id="st-rate" placeholder="0.00"></div>
+    </div>
+    <div class="fg"><label class="fl">Phone</label><input class="fi" id="st-phone" placeholder="07xxx xxxxxx"></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;">
+      <button class="btn btn-g" onclick="closeM('addstaff')">Cancel</button>
+      <button class="btn btn-p" onclick="addStaff()">Add Staff</button>
+    </div>
+  </div>
+</div>
+
+<div class="moverlay" id="m-logpayment">
+  <div class="modal">
+    <div class="mh"><div class="mt">Log Wage Payment</div><button class="mclose" onclick="closeM('logpayment')">✕</button></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Staff Member</label><select class="fs" id="wp-staff"></select></div>
+      <div class="fg"><label class="fl">Amount (£)</label><input class="fi" id="wp-amount" type="number" placeholder="0.00"></div>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Date</label><input class="fi" type="date" id="wp-date"></div>
+      <div class="fg"><label class="fl">Period</label><input class="fi" id="wp-period" placeholder="e.g. Week of 1 Apr"></div>
+    </div>
+    <div class="fg"><label class="fl">Payment Method</label><select class="fs" id="wp-method"><option>Bank Transfer</option><option>Cash</option><option>Barclays</option></select></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;">
+      <button class="btn btn-g" onclick="closeM('logpayment')">Cancel</button>
+      <button class="btn btn-p" onclick="logPayment()">Log Payment</button>
+    </div>
+  </div>
+</div>
+
+<div class="moverlay" id="m-addtask">
+  <div class="modal">
+    <div class="mh"><div class="mt">New Task</div><button class="mclose" onclick="closeM('addtask')">✕</button></div>
+    <div class="fg"><label class="fl">Task</label><input class="fi" id="t-title" placeholder="What needs doing?"></div>
+    <div class="g2">
+      <div class="fg"><label class="fl">Priority</label><select class="fs" id="t-pri"><option>Normal</option><option>High</option><option>Urgent</option></select></div>
+      <div class="fg"><label class="fl">Due Date</label><input class="fi" type="date" id="t-date"></div>
+    </div>
+    <div class="fg"><label class="fl">Notes</label><textarea class="fta" id="t-notes" placeholder="Details..."></textarea></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;">
+      <button class="btn btn-g" onclick="closeM('addtask')">Cancel</button>
+      <button class="btn btn-p" onclick="addTask()">Create Task</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- AT SETTINGS -->
+<div class="moverlay" id="m-at-settings">
+  <div class="modal">
+    <div class="mh"><div class="mt">Auto Trader Settings</div><button class="mclose" onclick="closeM('at-settings')">✕</button></div>
+    <div class="fg"><label class="fl">Mode</label><select class="fs" id="at-mode"><option value="demo">Demo Mode</option><option value="live">Live API</option></select></div>
+    <div class="fg"><label class="fl">API Key</label><input class="fi" id="at-apikey" placeholder="Your Auto Trader API key"></div>
+    <div class="fg"><label class="fl">Dealer ID</label><input class="fi" id="at-dealerid" placeholder="Dealer ID"></div>
+    <div class="fg"><label class="fl">Environment</label><select class="fs" id="at-env"><option value="sandbox">Sandbox</option><option value="production">Production</option></select></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;"><button class="btn btn-g" onclick="closeM('at-settings')">Cancel</button><button class="btn btn-p" onclick="saveATSettings()">Save</button></div>
+  </div>
+</div>
+
+<!-- AT NEW LISTING -->
+<div class="moverlay" id="m-at-new">
+  <div class="modal">
+    <div class="mh"><div class="mt">Create Auto Trader Listing</div><button class="mclose" onclick="closeM('at-new')">✕</button></div>
+    <div class="fg"><label class="fl">Vehicle</label><select class="fs" id="at-new-plate"></select></div>
+    <div class="fg"><label class="fl">Asking Price (£)</label><input class="fi" id="at-new-price" type="number" placeholder="e.g. 9995"></div>
+    <div class="fg"><label class="fl">Mileage</label><input class="fi" id="at-new-miles" type="number" placeholder="e.g. 52000"></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;"><button class="btn btn-g" onclick="closeM('at-new')">Cancel</button><button class="btn btn-p" onclick="createATListing()">Create Draft</button></div>
+  </div>
+</div>
+
+<!-- AT FULL EDITOR -->
+<div class="moverlay" id="m-at-edit">
+  <div class="modal modal-xl">
+    <div class="mh">
+      <div>
+        <div class="mt" id="at-edit-title">Edit Listing</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;" id="at-edit-sub"></div>
+      </div>
+      <button class="mclose" onclick="closeM('at-edit')">✕</button>
+    </div>
+    <div class="step-flow" id="at-edit-steps">
+      <div class="step active" id="step-details">Details</div>
+      <div class="step" id="step-desc">Description</div>
+      <div class="step" id="step-spec">Spec</div>
+      <div class="step" id="step-photos">Photos</div>
+      <div class="step" id="step-publish">Publish</div>
+    </div>
+    <div id="at-edit-body"></div>
+  </div>
+</div>
+
+<!-- IG SETTINGS -->
+<div class="moverlay" id="m-ig-settings">
+  <div class="modal">
+    <div class="mh"><div class="mt">Instagram Settings</div><button class="mclose" onclick="closeM('ig-settings')">✕</button></div>
+    <div class="fg"><label class="fl">Mode</label><select class="fs" id="ig-mode"><option value="demo">Demo Mode</option><option value="live">Live API</option></select></div>
+    <div class="fg"><label class="fl">Account Handle</label><input class="fi" id="ig-handle" placeholder="@mpmotorslondon"></div>
+    <div class="fg"><label class="fl">Meta App ID</label><input class="fi" id="ig-appid" placeholder="Meta App ID"></div>
+    <div class="fg"><label class="fl">Access Token</label><input class="fi" id="ig-token" placeholder="Meta access token"></div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;"><button class="btn btn-g" onclick="closeM('ig-settings')">Cancel</button><button class="btn btn-p" onclick="saveIGSettings()">Save</button></div>
+  </div>
+</div>
+
+<!-- IG NEW POST -->
+<div class="moverlay" id="m-ig-new">
+  <div class="modal modal-xl">
+    <div class="mh"><div class="mt">Create Instagram Post</div><button class="mclose" onclick="closeM('ig-new')">✕</button></div>
+    <div class="media-layout">
+      <div>
+        <div class="fg"><label class="fl">Vehicle</label><select class="fs" id="ig-new-plate" onchange="igSelectVehicle(this.value)"></select></div>
+        <div class="fg"><label class="fl">Post Type</label><select class="fs" id="ig-new-type"><option value="carousel">Carousel (Multiple Photos)</option><option value="single">Single Image</option></select></div>
+        <div class="fg"><label class="fl">Caption</label><textarea class="fta" id="ig-new-caption" style="min-height:120px;" placeholder="Write your caption here..."></textarea></div>
+        <div class="fg"><label class="fl">Hashtags</label><input class="fi" id="ig-new-hashtags" placeholder="#usedcars #london #mpmotors"></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px;">
+          <button class="btn btn-g btn-sm" onclick="igGenCaption()">✨ Generate Caption</button>
+          <button class="btn btn-g btn-sm" onclick="igUseATDesc()">📝 Use AT Description</button>
+        </div>
+        <div class="fg"><label class="fl">Schedule (optional)</label><input class="fi" type="datetime-local" id="ig-new-schedule"></div>
+      </div>
+      <div>
+        <div class="fl" style="margin-bottom:8px;">Select Photos</div>
+        <div id="ig-photo-picker" style="display:flex;flex-direction:column;gap:6px;max-height:380px;overflow-y:auto;"></div>
+        <div style="margin-top:10px;font-size:10.5px;color:var(--text3);">Tick photos to include. Drag to reorder.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:7px;justify-content:flex-end;margin-top:13px;">
+      <button class="btn btn-g" onclick="closeM('ig-new')">Cancel</button>
+      <button class="btn btn-amber" onclick="saveIGDraft()">Save Draft</button>
+      <button class="btn btn-p" onclick="postToInstagram()">📱 Post Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- MEDIA MANAGER MODAL -->
+<div class="moverlay" id="m-media">
+  <div class="modal modal-xl">
+    <div class="mh">
+      <div>
+        <div class="mt" id="media-title">Media Manager</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;" id="media-sub"></div>
+      </div>
+      <button class="mclose" onclick="closeM('media')">✕</button>
+    </div>
+    <div class="media-layout">
+      <div>
+        <div class="ch"><div class="ct">Photos <span id="media-photo-count"></span></div>
+          <div style="display:flex;gap:5px;">
+            <button class="btn btn-g btn-sm" onclick="document.getElementById('media-file-input').click()">+ Add Photos</button>
+            <button class="btn btn-amber btn-sm" onclick="autoOrderPhotos()">🔁 Auto-Order</button>
+          </div>
+        </div>
+        <input type="file" id="media-file-input" multiple accept="image/*" style="display:none;" onchange="handleMediaUpload(this)">
+        <div class="photo-grid" id="media-photo-grid"></div>
+      </div>
+      <div>
+        <div class="ct" style="margin-bottom:10px;">Listing Status</div>
+        <div id="media-listing-status"></div>
+        <div class="div"></div>
+        <div class="ct" style="margin-bottom:10px;">Quick Actions</div>
+        <div style="display:flex;flex-direction:column;gap:7px;" id="media-quick-actions"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGO + DATA INJECTED BELOW -->

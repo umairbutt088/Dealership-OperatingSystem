@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     data_dir: Path = Path(__file__).resolve().parent.parent / "data"
     database_url: str = "sqlite:///./data/dealershipos.db"
     bootstrap_from_asset: bool = True
+    app_state_cache_ttl_seconds: int = 15
     cars_subdir: str = "Cars"
     investors_subdir: str = "Investors"
     invoices_subdir: str = "Invoices"

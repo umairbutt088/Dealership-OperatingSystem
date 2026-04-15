@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import date, datetime
 from pathlib import Path
+from time import monotonic
 from typing import Any, Optional
 from urllib.parse import unquote, quote
 
@@ -23,6 +24,12 @@ router = APIRouter(prefix="/api", tags=["api"])
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 DEFAULT_TEMPLATE = PROJECT_ROOT / "assets" / "Master_Spreadsheet_TRIAL_sanitised.xlsx"
+_APP_STATE_CACHE: dict[str, Any] = {"payload": None, "expires_at": 0.0}
+
+
+def _invalidate_app_state_cache() -> None:
+    _APP_STATE_CACHE["payload"] = None
+    _APP_STATE_CACHE["expires_at"] = 0.0
 
 
 class VehicleCreate(BaseModel):
@@ -97,7 +104,14 @@ def health() -> dict[str, str]:
 
 @router.get("/app-state")
 def app_state(db: Session = Depends(get_db)) -> dict[str, Any]:
-    return build_app_state(db)
+    now = monotonic()
+    cached = _APP_STATE_CACHE.get("payload")
+    if cached is not None and now < float(_APP_STATE_CACHE.get("expires_at", 0.0)):
+        return cached
+    payload = build_app_state(db)
+    _APP_STATE_CACHE["payload"] = payload
+    _APP_STATE_CACHE["expires_at"] = now + max(1, int(settings.app_state_cache_ttl_seconds))
+    return payload
 
 
 @router.post("/vehicles")
@@ -133,6 +147,7 @@ def create_vehicle(body: VehicleCreate, db: Session = Depends(get_db)) -> dict[s
     db.commit()
     db.refresh(v)
     ensure_car_folders(v.stock_id)
+    _invalidate_app_state_cache()
     return vehicle_to_stock_dict(v)
 
 
@@ -159,6 +174,7 @@ def create_collection(body: CollectionCreate, db: Session = Depends(get_db)) -> 
     db.add(cr)
     db.commit()
     db.refresh(cr)
+    _invalidate_app_state_cache()
     return {"ok": True, "id": cr.id}
 
 
@@ -184,6 +200,7 @@ def create_delivery(body: DeliveryCreate, db: Session = Depends(get_db)) -> dict
     db.add(dr)
     db.commit()
     db.refresh(dr)
+    _invalidate_app_state_cache()
     return {"ok": True, "id": dr.id}
 
 
@@ -203,6 +220,7 @@ def patch_vehicle(stock_id: str, body: VehiclePatch, db: Session = Depends(get_d
     db.commit()
     db.refresh(v)
     ensure_car_folders(v.stock_id)
+    _invalidate_app_state_cache()
     return vehicle_to_sold_dict(v) if v.is_sold else vehicle_to_stock_dict(v)
 
 
@@ -218,6 +236,7 @@ async def excel_import(
     raw = await file.read()
     path.write_bytes(raw)
     counts = import_workbook(path, db, replace=replace)
+    _invalidate_app_state_cache()
     return {"imported": counts, "path": str(path)}
 
 

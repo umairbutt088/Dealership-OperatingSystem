@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: dealershipos
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn dealershipos.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DEALERSHIP_DATA_DIR
+        value: /var/data
+      - key: DEALERSHIP_DATABASE_URL
+        value: sqlite:////var/data/dealershipos.db

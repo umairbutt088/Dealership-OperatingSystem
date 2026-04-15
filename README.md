@@ -38,6 +38,12 @@ Default local URL:
 
 - [http://127.0.0.1:8765/](http://127.0.0.1:8765/)
 
+You can override bind settings via environment variables:
+
+```bash
+HOST=0.0.0.0 PORT=8765 ./run.sh
+```
+
 ## Data And Files
 
 - Database: `data/dealershipos.db`
@@ -46,6 +52,26 @@ Default local URL:
 - Investor folders: `data/Investors/<name>/`
 - Exported workbooks: `data/exports/`
 - Uploaded workbooks: `data/uploads/`
+
+## Render Deployment (Free Tier)
+
+This project includes a `render.yaml` blueprint for one-click setup.
+
+### Quick Deploy
+
+1. Push this repo to GitHub.
+2. In Render, create a new **Web Service** from the repo.
+3. Render auto-detects `render.yaml` and uses:
+   - Build command: `pip install -r requirements.txt`
+   - Start command: `uvicorn dealershipos.main:app --host 0.0.0.0 --port $PORT`
+4. Ensure environment variables are set:
+   - `DEALERSHIP_DATA_DIR=/var/data`
+   - `DEALERSHIP_DATABASE_URL=sqlite:////var/data/dealershipos.db`
+5. Add a persistent disk mounted at `/var/data` if available in your Render plan.
+
+### Important Free-Tier Note
+
+If persistent disk is not available on your free plan, SQLite data/uploads/photos may reset during restarts or redeploys.
 
 ## Known Limitations (Honest + Concise)
 

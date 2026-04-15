@@ -7,5 +7,7 @@ fi
 # shellcheck source=/dev/null
 source .venv/bin/activate
 pip install -q -r requirements.txt
-echo "Open http://127.0.0.1:8765/"
-exec uvicorn dealershipos.main:app --host 127.0.0.1 --port 8765
+HOST="${HOST:-127.0.0.1}"
+PORT="${PORT:-8765}"
+echo "Open http://${HOST}:${PORT}/"
+exec uvicorn dealershipos.main:app --host "${HOST}" --port "${PORT}"

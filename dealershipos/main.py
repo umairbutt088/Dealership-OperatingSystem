@@ -27,7 +27,7 @@ app.add_middleware(
 @app.on_event("startup")
 def on_startup() -> None:
     init_db()
-    if ASSETS_XLSX.is_file():
+    if settings.bootstrap_from_asset and ASSETS_XLSX.is_file():
         db = SessionLocal()
         try:
             from sqlalchemy import func, select

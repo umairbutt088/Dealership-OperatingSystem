@@ -72,6 +72,10 @@ This project includes a `render.yaml` blueprint for one-click setup.
 ### Important Free-Tier Note
 
 If persistent disk is not available on your free plan, SQLite data/uploads/photos may reset during restarts or redeploys.
+For free-tier demo deploys without disk, set:
+
+- `DEALERSHIP_DATA_DIR=/tmp/dealershipos-data`
+- `DEALERSHIP_DATABASE_URL=sqlite:////tmp/dealershipos-data/dealershipos.db`
 
 ## Known Limitations (Honest + Concise)
 
